@@ -1,0 +1,92 @@
+
+/* Main application layout */
+.dashboard-layout {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #f8fafc;
+}
+
+/* Sidebar */
+.dashboard-layout .app-sidebar {
+  flex: 0 0 260px;
+  width: 260px;
+  min-width: 260px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* Main content fills remaining browser width */
+.dashboard-main {
+  flex: 1 1 0%;
+  width: 0;
+  min-width: 0;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #f8fafc;
+}
+
+/* Prevent child pages from forcing the layout wider */
+.dashboard-main > * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Tablet and mobile */
+@media (max-width: 700px) {
+  .dashboard-layout .app-sidebar {
+    flex-basis: 215px;
+    width: 215px;
+    min-width: 215px;
+  }
+}
+
+
+
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f7fc;
+}
+
+.dashboard-main {
+  flex: 1;
+  min-width: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+
+/* 
+.dashboard-layout {
+  display: flex;
+  align-items: flex-start;
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+.dashboard-main {
+  flex: 1;
+  min-width: 0;
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+@media (max-width: 700px) {
+  .dashboard-layout {
+    align-items: stretch;
+  }
+
+  .dashboard-main {
+    overflow-x: auto;
+  }
+} */

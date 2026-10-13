@@ -1,0 +1,555 @@
+
+/* ========================================
+   STUDENT MANAGEMENT — MODERN THEME
+   ======================================== */
+
+   .students-page {
+    --student-primary: #2563eb;
+    --student-primary-dark: #1d4ed8;
+    --student-navy: #0f172a;
+    --student-muted: #64748b;
+    --student-border: #e2e8f0;
+  
+    width: 100%;
+    min-width: 0;
+    padding: 24px;
+    color: #1e293b;
+    box-sizing: border-box;
+    animation: studentPageIn 0.35s ease;
+  }
+  
+  .students-page *,
+  .students-page *::before,
+  .students-page *::after {
+    box-sizing: border-box;
+  }
+  
+  @keyframes studentPageIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Header */
+  
+  .students-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    overflow: hidden;
+    padding: 30px;
+    margin-bottom: 26px;
+    border-radius: 20px;
+    color: #fff;
+    background: linear-gradient(125deg, #0f172a 0%, #172554 48%, #2563eb 100%);
+    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.14);
+  }
+  
+  .students-header::after {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    right: -65px;
+    top: -115px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    box-shadow:
+      0 0 0 24px rgba(255, 255, 255, 0.035),
+      0 0 0 48px rgba(255, 255, 255, 0.025);
+    pointer-events: none;
+  }
+  
+  .students-header > div:first-child {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .students-header h1 {
+    margin: 0 0 10px;
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 1.2;
+    font-weight: 750;
+    letter-spacing: -0.6px;
+  }
+  
+  .students-header p {
+    margin: 0;
+    max-width: 540px;
+    color: #dbeafe;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  
+  .student-count {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+    min-width: 150px;
+    padding: 18px 22px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+  }
+  
+  .student-count span {
+    display: block;
+    margin-bottom: 7px;
+    color: #dbeafe;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  
+  .student-count strong {
+    display: block;
+    font-size: 32px;
+    line-height: 1.1;
+    color: #fff;
+  }
+  
+  /* Alerts */
+  
+  .student-alert {
+    padding: 14px 17px;
+    margin: 0 0 20px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+  
+  .student-alert.error {
+    color: #b91c1c;
+    background: #fef2f2;
+    border-color: #fecaca;
+  }
+  
+  .student-alert.success {
+    color: #166534;
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+  }
+  
+  /* Cards */
+  
+  .student-card {
+    min-width: 0;
+    padding: 26px;
+    margin-bottom: 24px;
+    border: 1px solid #e8edf5;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.045);
+    transition:
+      box-shadow 0.2s ease,
+      border-color 0.2s ease;
+  }
+  
+  .student-card:hover {
+    border-color: #dbeafe;
+    box-shadow: 0 8px 26px rgba(15, 23, 42, 0.065);
+  }
+  
+  .student-card h2 {
+    margin: 0 0 23px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #edf2f7;
+    color: var(--student-navy);
+    font-size: 19px;
+    font-weight: 750;
+    letter-spacing: -0.25px;
+  }
+  
+  /* Registration form */
+  
+  .student-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+  
+  .student-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+    color: #334155;
+    font-size: 13px;
+    font-weight: 650;
+  }
+  
+  .student-form input:not([type="checkbox"]),
+  .student-form select,
+  .student-form textarea {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    padding: 12px 14px;
+    border: 1px solid #dbe3ef;
+    border-radius: 10px;
+    outline: none;
+    background: #f8fafc;
+    color: #0f172a;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 400;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      background 0.2s ease;
+  }
+  
+  .student-form input:not([type="checkbox"]),
+  .student-form select {
+    min-height: 45px;
+  }
+  
+  .student-form textarea {
+    min-height: 95px;
+    resize: vertical;
+  }
+  
+  .student-form input:focus,
+  .student-form select:focus,
+  .student-form textarea:focus {
+    border-color: var(--student-primary);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.11);
+  }
+  
+  .student-form input::placeholder,
+  .student-form textarea::placeholder {
+    color: #94a3b8;
+  }
+  
+  .student-form .full-width {
+    grid-column: 1 / -1;
+  }
+  
+  .student-form .active-checkbox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    align-self: center;
+    width: fit-content;
+    color: #334155;
+    cursor: pointer;
+  }
+  
+  .active-checkbox input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    margin: 0;
+    accent-color: var(--student-primary);
+    cursor: pointer;
+  }
+  
+  /* Buttons */
+  
+  .students-page button {
+    min-height: 40px;
+    padding: 10px 16px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 650;
+    cursor: pointer;
+    transition:
+      transform 0.18s ease,
+      background 0.18s ease,
+      box-shadow 0.18s ease;
+  }
+  
+  .students-page button:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.25);
+    outline-offset: 2px;
+  }
+  
+  .students-page button:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+  
+  .students-page button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
+  
+  .student-form button[type="submit"] {
+    color: #fff;
+    background: linear-gradient(120deg, #2563eb, #1d4ed8);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.18);
+  }
+  
+  .student-form button[type="submit"]:hover:not(:disabled) {
+    background: linear-gradient(120deg, #1d4ed8, #1e40af);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.24);
+  }
+  
+  .students-page .secondary-button {
+    color: #334155;
+    background: #f1f5f9;
+    border-color: #e2e8f0;
+  }
+  
+  .students-page .secondary-button:hover {
+    color: #1d4ed8;
+    background: #eff6ff;
+    border-color: #bfdbfe;
+  }
+  
+  .form-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 4px;
+  }
+  
+  /* Search and filters */
+  
+  .student-filters {
+    display: grid;
+    grid-template-columns: minmax(200px, 2fr) minmax(140px, 1fr)
+      minmax(140px, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 17px;
+  }
+  
+  .student-filters input,
+  .student-filters select {
+    width: 100%;
+    min-width: 0;
+    min-height: 43px;
+    padding: 10px 12px;
+    border: 1px solid #dbe3ef;
+    border-radius: 10px;
+    outline: none;
+    background: #f8fafc;
+    color: #334155;
+    font-family: inherit;
+    font-size: 13px;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  
+  .student-filters input:focus,
+  .student-filters select:focus {
+    border-color: var(--student-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  }
+  
+  .student-filters input::placeholder {
+    color: #94a3b8;
+  }
+  
+  .student-filters .secondary-button {
+    white-space: nowrap;
+  }
+  
+  .student-card > p {
+    margin: 14px 0;
+    color: var(--student-muted);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  
+  /* Student table */
+  
+  .student-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid #e8edf5;
+    border-radius: 12px;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 #f8fafc;
+  }
+  
+  .student-table {
+    width: 100%;
+    min-width: 850px;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fff;
+    text-align: left;
+  }
+  
+  .student-table th {
+    padding: 15px 16px;
+    color: #475569;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: 0.55px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  
+  .student-table td {
+    padding: 15px 16px;
+    color: #475569;
+    border-bottom: 1px solid #edf2f7;
+    font-size: 13px;
+    vertical-align: middle;
+  }
+  
+  .student-table tbody tr {
+    transition: background 0.15s ease;
+  }
+  
+  .student-table tbody tr:hover {
+    background: #f8fbff;
+  }
+  
+  .student-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .student-table td:first-child {
+    color: #0f172a;
+    font-weight: 650;
+  }
+  
+  .student-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  
+  .student-status::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  
+  .student-status.active {
+    color: #15803d;
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+  }
+  
+  .student-status.inactive {
+    color: #b91c1c;
+    background: #fef2f2;
+    border-color: #fecaca;
+  }
+  
+  .students-page .edit-button {
+    min-height: 33px;
+    padding: 7px 11px;
+    margin-right: 7px;
+    color: #1d4ed8;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+  }
+  
+  .students-page .edit-button:hover {
+    background: #dbeafe;
+  }
+  
+  .students-page .delete-button {
+    min-height: 33px;
+    padding: 7px 11px;
+    color: #b91c1c;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+  }
+  
+  .students-page .delete-button:hover {
+    background: #fee2e2;
+  }
+  
+  /* Responsive layout */
+  
+  @media (max-width: 1100px) {
+    .student-filters {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  
+    .student-filters .secondary-button {
+      justify-self: start;
+    }
+  }
+  
+  @media (max-width: 700px) {
+    .students-page {
+      padding: 15px;
+    }
+  
+    .students-header {
+      align-items: flex-start;
+      flex-direction: column;
+      padding: 23px;
+      border-radius: 16px;
+    }
+  
+    .student-count {
+      width: 100%;
+      min-width: 0;
+      padding: 13px 16px;
+    }
+  
+    .student-count strong {
+      font-size: 27px;
+    }
+  
+    .student-card {
+      padding: 19px;
+      border-radius: 15px;
+    }
+  
+    .student-form {
+      grid-template-columns: 1fr;
+      gap: 17px;
+    }
+  
+    .student-form .full-width {
+      grid-column: auto;
+    }
+  
+    .student-filters {
+      grid-template-columns: 1fr;
+    }
+  
+    .student-filters .secondary-button {
+      justify-self: stretch;
+    }
+  
+    .form-actions {
+      align-items: stretch;
+      flex-direction: column;
+    }
+  
+    .form-actions button {
+      width: 100%;
+    }
+  
+    .students-page .edit-button,
+    .students-page .delete-button {
+      margin: 2px 4px 2px 0;
+    }
+  }
+  

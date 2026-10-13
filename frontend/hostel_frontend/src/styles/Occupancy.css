@@ -1,0 +1,830 @@
+
+/* ==========================================
+   OCCUPANCY — NAVY & BLUE MANAGEMENT THEME
+   ========================================== */
+
+   .occupancy-page {
+    --occ-navy: #0f172a;
+    --occ-blue: #2563eb;
+    --occ-blue-dark: #1d4ed8;
+    --occ-muted: #64748b;
+    --occ-border: #e5ebf4;
+  
+    width: 100%;
+    min-width: 0;
+    padding: 24px;
+    color: #1e293b;
+    box-sizing: border-box;
+    animation: occupancyFadeIn 0.35s ease;
+  }
+  
+  .occupancy-page *,
+  .occupancy-page *::before,
+  .occupancy-page *::after {
+    box-sizing: border-box;
+  }
+  
+  @keyframes occupancyFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Header */
+  
+  .occupancy-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    overflow: hidden;
+    padding: 32px;
+    margin-bottom: 25px;
+    border-radius: 20px;
+    color: #fff;
+    background: linear-gradient(
+      125deg,
+      #0f172a 0%,
+      #172554 48%,
+      #2563eb 100%
+    );
+    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.14);
+  }
+  
+  .occupancy-header::after {
+    content: "";
+    position: absolute;
+    top: -115px;
+    right: -55px;
+    width: 250px;
+    height: 250px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 50%;
+    box-shadow:
+      0 0 0 24px rgba(255, 255, 255, 0.035),
+      0 0 0 50px rgba(255, 255, 255, 0.025);
+    pointer-events: none;
+  }
+  
+  .occupancy-header-content {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .occupancy-eyebrow,
+  .occupancy-section-label {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+  }
+  
+  .occupancy-eyebrow {
+    color: #bfdbfe;
+  }
+  
+  .occupancy-header h1 {
+    margin: 0 0 10px;
+    color: #fff;
+    font-size: clamp(25px, 3vw, 34px);
+    font-weight: 750;
+    letter-spacing: -0.7px;
+    line-height: 1.2;
+  }
+  
+  .occupancy-header p {
+    max-width: 650px;
+    margin: 0;
+    color: #dbeafe;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  
+  .occupancy-refresh {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    flex-shrink: 0;
+    min-height: 44px;
+    padding: 12px 17px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.12);
+    font-size: 13px;
+    font-weight: 650;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .occupancy-refresh span {
+    font-size: 20px;
+    line-height: 1;
+  }
+  
+  .occupancy-refresh:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.22);
+  }
+  
+  .occupancy-refresh:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
+  
+  /* Alerts */
+  
+  .occupancy-alert,
+  .occupancy-success {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    border: 1px solid;
+    border-radius: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  
+  .occupancy-alert {
+    border-color: #fecaca;
+    color: #b91c1c;
+    background: #fef2f2;
+  }
+  
+  .occupancy-success {
+    border-color: #bbf7d0;
+    color: #166534;
+    background: #f0fdf4;
+  }
+  
+  .occupancy-alert-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    color: #fff;
+    background: #dc2626;
+    font-weight: 800;
+  }
+  
+  .occupancy-alert-close,
+  .occupancy-success-close {
+    flex-shrink: 0;
+    margin-left: auto;
+    border: none;
+    background: transparent;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  
+  .occupancy-alert-close {
+    color: #b91c1c;
+  }
+  
+  .occupancy-success-close {
+    color: #166534;
+  }
+  
+  /* Loading */
+  
+  .occupancy-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 240px;
+    padding: 30px;
+    border: 1px solid var(--occ-border);
+    border-radius: 16px;
+    color: var(--occ-muted);
+    background: #fff;
+  }
+  
+  .occupancy-loading p {
+    font-size: 14px;
+  }
+  
+  .occupancy-spinner {
+    width: 35px;
+    height: 35px;
+    border: 3px solid #dbeafe;
+    border-top-color: var(--occ-blue);
+    border-radius: 50%;
+    animation: occupancySpin 0.8s linear infinite;
+  }
+  
+  @keyframes occupancySpin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Summary cards */
+  
+  .occupancy-summary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 25px;
+  }
+  
+  .occupancy-stat {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 165px;
+    padding: 21px;
+    overflow: hidden;
+    border: 1px solid var(--occ-border);
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.04);
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  
+  .occupancy-stat::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--stat-accent, #2563eb);
+  }
+  
+  .occupancy-stat:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 26px rgba(15, 23, 42, 0.07);
+  }
+  
+  .occupancy-stat-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--occ-muted);
+    font-size: 13px;
+    font-weight: 650;
+  }
+  
+  .occupancy-stat-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 43px;
+    height: 43px;
+    border-radius: 12px;
+    background: var(--stat-tint);
+    font-size: 21px;
+  }
+  
+  .stat-blue {
+    --stat-accent: #2563eb;
+    --stat-tint: #eff6ff;
+  }
+  
+  .stat-purple {
+    --stat-accent: #7c3aed;
+    --stat-tint: #f5f3ff;
+  }
+  
+  .stat-orange {
+    --stat-accent: #ea580c;
+    --stat-tint: #fff7ed;
+  }
+  
+  .stat-green {
+    --stat-accent: #16a34a;
+    --stat-tint: #f0fdf4;
+  }
+  
+  .occupancy-stat-value {
+    display: block;
+    margin-top: 14px;
+    color: var(--occ-navy);
+    font-size: clamp(27px, 3vw, 34px);
+    font-weight: 800;
+    letter-spacing: -0.7px;
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+  }
+  
+  .occupancy-stat p {
+    margin: 9px 0 0;
+    color: #94a3b8;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  
+  /* Main cards */
+  
+  .occupancy-card {
+    min-width: 0;
+    padding: 26px;
+    margin-bottom: 24px;
+    border: 1px solid var(--occ-border);
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.04);
+  }
+  
+  .occupancy-section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 23px;
+  }
+  
+  .occupancy-section-heading > div:first-child {
+    min-width: 0;
+  }
+  
+  .occupancy-section-label {
+    color: var(--occ-muted);
+  }
+  
+  .occupancy-section-heading h2 {
+    margin: 0 0 7px;
+    color: var(--occ-navy);
+    font-size: 19px;
+    font-weight: 750;
+    letter-spacing: -0.3px;
+  }
+  
+  .occupancy-section-heading p {
+    margin: 0;
+    color: var(--occ-muted);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  
+  .occupancy-percentage {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-shrink: 0;
+  }
+  
+  .occupancy-percentage strong {
+    color: var(--occ-blue);
+    font-size: 34px;
+    font-weight: 800;
+    line-height: 1.1;
+  }
+  
+  .occupancy-percentage span {
+    margin-top: 5px;
+    color: var(--occ-muted);
+    font-size: 12px;
+  }
+  
+  /* Overall occupancy bar */
+  
+  .occupancy-progress-track,
+  .room-progress-track {
+    width: 100%;
+    height: 11px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #eaf0f8;
+  }
+  
+  .occupancy-progress-fill,
+  .room-progress-fill {
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #2563eb, #60a5fa);
+    transition: width 0.4s ease;
+  }
+  
+  .occupancy-overall-details {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    padding-top: 22px;
+  }
+  
+  .occupancy-overall-details > div {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+  }
+  
+  .occupancy-overall-details > div > span:nth-child(2) {
+    color: var(--occ-muted);
+    font-size: 12px;
+  }
+  
+  .occupancy-overall-details strong {
+    color: var(--occ-navy);
+    font-size: 18px;
+    font-weight: 750;
+  }
+  
+  .occupancy-legend-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+  }
+  
+  .dot-occupied {
+    background: #2563eb;
+  }
+  
+  .dot-available {
+    background: #16a34a;
+  }
+  
+  .dot-capacity {
+    background: #94a3b8;
+  }
+  
+  /* Room table */
+  
+  .occupancy-rooms-card {
+    padding-bottom: 10px;
+  }
+  
+  .occupancy-room-count {
+    flex-shrink: 0;
+    padding: 8px 12px;
+    border: 1px solid #dbeafe;
+    border-radius: 20px;
+    color: #1d4ed8;
+    background: #eff6ff;
+    font-size: 12px;
+    font-weight: 750;
+  }
+  
+  .occupancy-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--occ-border);
+    border-radius: 12px;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 #f8fafc;
+  }
+  
+  .occupancy-table {
+    width: 100%;
+    min-width: 950px;
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: left;
+    font-size: 13px;
+  }
+  
+  .occupancy-table thead {
+    background: #f8fafc;
+  }
+  
+  .occupancy-table th {
+    padding: 15px 14px;
+    border-bottom: 1px solid var(--occ-border);
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: 0.35px;
+    white-space: nowrap;
+  }
+  
+  .occupancy-table td {
+    padding: 15px 14px;
+    border-bottom: 1px solid #edf2f7;
+    color: #475569;
+    vertical-align: middle;
+  }
+  
+  .occupancy-table tbody tr {
+    transition: background 0.15s ease;
+  }
+  
+  .occupancy-table tbody tr:hover {
+    background: #f8fbff;
+  }
+  
+  .occupancy-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .occupancy-hostel-name {
+    display: inline-block;
+    max-width: 180px;
+    color: #475569;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+  }
+  
+  .occupancy-room-number {
+    display: inline-block;
+    padding: 5px 9px;
+    border: 1px solid #e2e8f0;
+    border-radius: 7px;
+    color: var(--occ-navy);
+    background: #f8fafc;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  
+  .occupancy-table-number {
+    color: var(--occ-navy);
+    font-size: 14px;
+  }
+  
+  .occupancy-number-occupied {
+    color: #1d4ed8;
+    font-weight: 750;
+  }
+  
+  .occupancy-number-available {
+    color: #15803d;
+    font-weight: 750;
+  }
+  
+  /* Capacity input */
+  
+  .occupancy-capacity-input {
+    width: 85px;
+    min-height: 37px;
+    padding: 8px 9px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    outline: none;
+    color: var(--occ-navy);
+    background: #fff;
+    font: inherit;
+    font-size: 13px;
+  }
+  
+  .occupancy-capacity-input:focus {
+    border-color: var(--occ-blue);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  }
+  
+  .occupancy-capacity-input:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  /* Room occupancy mini progress */
+  
+  .room-occupancy {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 130px;
+  }
+  
+  .room-progress-track {
+    width: 82px;
+    height: 7px;
+    flex-shrink: 0;
+  }
+  
+  .room-progress-fill {
+    background: linear-gradient(90deg, #2563eb, #60a5fa);
+  }
+  
+  .room-progress-fill.room-fill-full {
+    background: linear-gradient(90deg, #dc2626, #f87171);
+  }
+  
+  .room-occupancy-percentage {
+    min-width: 33px;
+    color: #475569;
+    font-size: 11px;
+    font-weight: 750;
+  }
+  
+  /* Table action buttons */
+  
+  .capacity-actions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  
+  .capacity-save-button,
+  .capacity-cancel-button,
+  .capacity-edit-button {
+    min-height: 35px;
+    padding: 8px 11px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 750;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+      background 0.2s ease,
+      border-color 0.2s ease;
+  }
+  
+  .capacity-save-button {
+    color: #fff;
+    background: var(--occ-blue);
+  }
+  
+  .capacity-save-button:hover:not(:disabled) {
+    background: var(--occ-blue-dark);
+  }
+  
+  .capacity-edit-button {
+    border-color: #bfdbfe;
+    color: #1d4ed8;
+    background: #eff6ff;
+  }
+  
+  .capacity-edit-button:hover:not(:disabled) {
+    border-color: #93c5fd;
+    background: #dbeafe;
+  }
+  
+  .capacity-cancel-button {
+    border-color: #e2e8f0;
+    color: #475569;
+    background: #fff;
+  }
+  
+  .capacity-cancel-button:hover:not(:disabled) {
+    border-color: #cbd5e1;
+    background: #f8fafc;
+  }
+  
+  .capacity-save-button:disabled,
+  .capacity-cancel-button:disabled,
+  .capacity-edit-button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+  
+  /* Empty state */
+  
+  .occupancy-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    border: 1px dashed #cbd5e1;
+    border-radius: 14px;
+    text-align: center;
+    background: #f8fafc;
+  }
+  
+  .occupancy-empty > span {
+    display: grid;
+    place-items: center;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 14px;
+    border-radius: 17px;
+    background: #eff6ff;
+    font-size: 28px;
+  }
+  
+  .occupancy-empty h3 {
+    margin: 0 0 8px;
+    color: var(--occ-navy);
+    font-size: 17px;
+  }
+  
+  .occupancy-empty p {
+    max-width: 370px;
+    margin: 0;
+    color: var(--occ-muted);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  
+  /* Accessibility */
+  
+  .occupancy-page button:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.3);
+    outline-offset: 3px;
+  }
+  
+  /* Responsive layout */
+  
+  @media (max-width: 1150px) {
+    .occupancy-summary {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  
+  @media (max-width: 800px) {
+    .occupancy-page {
+      padding: 18px;
+    }
+  
+    .occupancy-overall-details {
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .occupancy-page {
+      padding: 12px;
+    }
+  
+    .occupancy-header {
+      align-items: stretch;
+      flex-direction: column;
+      padding: 23px;
+      border-radius: 16px;
+    }
+  
+    .occupancy-refresh {
+      align-self: flex-start;
+    }
+  
+    .occupancy-summary {
+      gap: 12px;
+    }
+  
+    .occupancy-stat {
+      min-height: 150px;
+      padding: 15px;
+    }
+  
+    .occupancy-stat-top {
+      align-items: flex-start;
+      font-size: 12px;
+    }
+  
+    .occupancy-stat-icon {
+      width: 35px;
+      height: 35px;
+      border-radius: 10px;
+      font-size: 18px;
+    }
+  
+    .occupancy-stat-value {
+      font-size: 27px;
+    }
+  
+    .occupancy-card {
+      padding: 19px;
+      border-radius: 15px;
+    }
+  
+    .occupancy-section-heading {
+      align-items: flex-start;
+      gap: 12px;
+    }
+  
+    .occupancy-section-heading h2 {
+      font-size: 17px;
+    }
+  
+    .occupancy-percentage strong {
+      font-size: 28px;
+    }
+  
+    .occupancy-room-count {
+      padding: 6px 9px;
+      font-size: 10px;
+    }
+  
+    .occupancy-table {
+      min-width: 900px;
+    }
+  
+    .occupancy-alert,
+    .occupancy-success {
+      align-items: flex-start;
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .occupancy-page,
+    .occupancy-spinner,
+    .occupancy-stat,
+    .occupancy-progress-fill,
+    .room-progress-fill {
+      animation: none;
+      transition: none;
+    }
+  }
+  
